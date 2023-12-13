@@ -14,3 +14,8 @@
 ## 1. TabView
 
 ## 2. Swipe ScrollView
+- Swipe UI trai phai bang
+	+ nhan nut
+	+ vuot trai fai
+
+
