@@ -16,7 +16,7 @@ using UnityEngine.UI;
         
     
 */
-public class TabButton : MonoBehaviour, IPointerClickHandler, IPointerExitHandler, IPointerEnterHandler
+public class TabButton : AppMonoBehaviour, IPointerClickHandler, IPointerExitHandler, IPointerEnterHandler
 {
     public GetChild iconChild;
     public Image imgIcon1, imgIcon2;
@@ -26,7 +26,7 @@ public class TabButton : MonoBehaviour, IPointerClickHandler, IPointerExitHandle
     // reference to TabGroup
     public TabGroup tabGroup;
 
-    private void Start()
+    protected override void Load_Components()
     {
         tabGroup = GetComponentInParent<TabGroup>();
         iconChild = GetComponentInChildren<GetChild>();
@@ -35,7 +35,6 @@ public class TabButton : MonoBehaviour, IPointerClickHandler, IPointerExitHandle
         imgIcon2 = iconChild.img2;
 
         txtLabel = GetComponentInChildren<TextMeshProUGUI>();
-
         tabGroup.Subscribe(this);
     }
 

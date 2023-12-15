@@ -12,10 +12,10 @@ using UnityEngine;
             Tab ...
         
 */
-public class TabGroup : MonoBehaviour
+public class TabGroup : AppMonoBehaviour
 {
-    [SerializeField] Color cTabSelected;
-    [SerializeField] Color cTabDeSelected;
+    [SerializeField] Color cTabLabelSelected;
+    [SerializeField] Color cTabLabelDeSelected;
     [SerializeField] TabButton selectedTabButton;
 
     [SerializeField] List<TabButton> tabButtons;
@@ -26,7 +26,6 @@ public class TabGroup : MonoBehaviour
     [Range(0f, 3f)]
     [SerializeField] float duration = 1f;
     [SerializeField] LeanTweenType leanTweenType = LeanTweenType.easeOutBounce;
-
 
     public TabButton GetFirstTabButtons()
     {
@@ -70,9 +69,10 @@ public class TabGroup : MonoBehaviour
     {
         selectedTabButton = _tabButton;
         ResetTabs();
-        ActiveTabButton(_tabButton);
-        SwapTabPages(_tabButton.transform.GetSiblingIndex());
 
+        ActiveTabButton(_tabButton);
+
+        SwapTabPages(_tabButton.transform.GetSiblingIndex());
     }
 
     private void ActiveTabButton(TabButton _tabButton)
@@ -85,15 +85,14 @@ public class TabGroup : MonoBehaviour
             }
         ).setEase(leanTweenType);
 
-        _tabButton.imgIcon2.color = cTabSelected;
-        _tabButton.txtLabel.color = cTabSelected;
+        _tabButton.txtLabel.color = cTabLabelSelected;
+        //Debug.Log(" " + cTabLabelSelected.r + "_" + cTabLabelSelected.g + " .." + cTabLabelSelected.b);
     }
 
     private void DeActiveTabButton(TabButton _tabButton)
     {
         _tabButton.imgIcon2.fillAmount = 0;
-        _tabButton.imgIcon2.color = cTabDeSelected;
-        _tabButton.txtLabel.color = cTabDeSelected;
+        _tabButton.txtLabel.color = cTabLabelDeSelected;
     }
 
     // Swap tabpage when click tabbutton
