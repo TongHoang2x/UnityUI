@@ -63,6 +63,7 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log("ondrag");
         //if(Mathf.Abs( drag end postion - drag start postion > dragthreshould ))
         if (Mathf.Abs(eventData.position.x - eventData.pressPosition.x) > dragThreshould)
         {
