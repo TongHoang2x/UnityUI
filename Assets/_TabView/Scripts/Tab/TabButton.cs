@@ -18,6 +18,7 @@ using UnityEngine.UI;
 */
 public class TabButton : AppMonoBehaviour, IPointerClickHandler, IPointerExitHandler, IPointerEnterHandler
 {
+    public int id;
     public GetChild iconChild;
     public Image imgIcon1, imgIcon2;
 
@@ -26,6 +27,9 @@ public class TabButton : AppMonoBehaviour, IPointerClickHandler, IPointerExitHan
     // reference to TabGroup
     public TabGroup tabGroup;
 
+    /// <summary>
+    /// Override tu AppMonoBehaviour de khi nhan reset no se load het cac component
+    /// </summary>
     protected override void Load_Components()
     {
         tabGroup = GetComponentInParent<TabGroup>();
@@ -38,16 +42,28 @@ public class TabButton : AppMonoBehaviour, IPointerClickHandler, IPointerExitHan
         tabGroup.Subscribe(this);
     }
 
+    /// <summary>
+    /// Khi click chon tabbutton
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
         tabGroup.OnTabClicked(this);
     }
 
+    /// <summary>
+    /// Khi di chuot len tren tabbutton
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
         tabGroup.OnTabEnter(this);
     }
 
+    /// <summary>
+    /// Khi chuot k con tren tabbutton
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnPointerExit(PointerEventData eventData)
     {
         tabGroup.OnTabExit(this);
