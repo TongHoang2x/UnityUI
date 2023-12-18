@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 /*
     TabView
         TabPages(Image, LayoutElement[Preferred width, preferred height], HorizontalLayoutGroup)
@@ -13,7 +12,7 @@ using UnityEngine.EventSystems;
             Tab ...
         
 */
-public class TabGroup : AppMonoBehaviour, IEndDragHandler
+public class TabGroup : AppMonoBehaviour
 {
     [SerializeField] Color cTabLabelSelected;
     [SerializeField] Color cTabLabelDeSelected;
@@ -29,18 +28,12 @@ public class TabGroup : AppMonoBehaviour, IEndDragHandler
     [SerializeField] float timeTabButton = 0.3f;
     [SerializeField] LeanTweenType leanTweenType = LeanTweenType.linear;
 
-
     [Space()]
     [Header("LeanTween Pages")]
     [SerializeField] Vector3 posStart;
     [SerializeField] Vector3 posEnd;
     [SerializeField][Range(0.1f, 2f)] float timePage = 0.5f;
     [SerializeField] LeanTweenType leanTweenTypePage = LeanTweenType.linear;
-
-    public TabButton GetFirstTabButtons()
-    {
-        return tabButtons[0];
-    }
 
     /// <summary>
     /// TabButton co tham chieu den tabgroup, de goi den TabGroup de tu dang ky vao
@@ -182,19 +175,4 @@ public class TabGroup : AppMonoBehaviour, IEndDragHandler
         rectPage.LeanMoveLocal(posEnd, timePage).setEase(leanTweenTypePage).setDelay(0.1f);
     }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        Debug.Log("OnEndDrag");
-        if (Mathf.Abs(eventData.position.y - eventData.pressPosition.y) > 15)
-        {
-            if (eventData.position.y > eventData.pressPosition.y)
-                Debug.Log("Len");
-            else
-                Debug.Log("xuong");
-        }
-        else
-        {
-            Debug.Log("ok");
-        }
-    }
 }
