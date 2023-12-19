@@ -58,7 +58,8 @@ public class EventScrollSub : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (horizontalDrag)
         {
             //newPosX = topViewStartPos.x + Mathf.Max(0, distance.x);
-            topView.localPosition = new Vector3(newPosX, topViewStartPos.y, topViewStartPos.z);
+            //topView.localPosition = new Vector3(newPosX, topViewStartPos.y, topViewStartPos.z);
+            topView.localPosition = new Vector3(eventData.position.x, topViewStartPos.y, topViewStartPos.z);
         }
         else
         {
