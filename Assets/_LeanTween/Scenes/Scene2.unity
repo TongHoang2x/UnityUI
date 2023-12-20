@@ -377,17 +377,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d20cf8be201c144c93fca1fb9c643dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backPanel: {fileID: 0}
-  homeButton: {fileID: 0}
-  replayButton: {fileID: 0}
-  star1: {fileID: 0}
-  star2: {fileID: 0}
-  star3: {fileID: 0}
-  score: {fileID: 0}
-  coins: {fileID: 0}
-  gems: {fileID: 0}
-  colorWheel: {fileID: 0}
-  levelSucess: {fileID: 0}
+  backPanel: {fileID: 563911267}
+  homeButton: {fileID: 1052310434}
+  replayButton: {fileID: 365724374}
+  star1: {fileID: 65787929}
+  star2: {fileID: 1583664443}
+  star3: {fileID: 610710984}
+  score: {fileID: 389364362}
+  coins: {fileID: 1418038389}
+  gems: {fileID: 226588073}
+  colorWheel: {fileID: 669708259}
+  levelSucess: {fileID: 116055706}
 --- !u!4 &187695002
 Transform:
   m_ObjectHideFlags: 0
