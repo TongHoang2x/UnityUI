@@ -59,7 +59,9 @@ public class EventScrollSub : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             //newPosX = topViewStartPos.x + Mathf.Max(0, distance.x);
             //topView.localPosition = new Vector3(newPosX, topViewStartPos.y, topViewStartPos.z);
+            //
             topView.localPosition = new Vector3(eventData.position.x, topViewStartPos.y, topViewStartPos.z);
+            topView.localPosition = new Vector3(Input.mousePosition.x, topViewStartPos.y, topViewStartPos.z);
         }
         else
         {
@@ -74,10 +76,13 @@ public class EventScrollSub : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         // neu dung la keo ngang
         if (horizontalDrag)
         {
+            //===
             distance = Input.mousePosition - mouseStrartPos;
             if (distance.x > (newPosX / 2))
             {
                 // show ra item down
+                topView.localPosition = new Vector3(newPosX, topViewStartPos.y, topViewStartPos.z);
+
                 // Sub: Nhan su kien scrollview thi thuc hien ham 
                 EventsScroll._EventScroll.OnScrollStart += HideItemDownWhenSCroll;
             }
