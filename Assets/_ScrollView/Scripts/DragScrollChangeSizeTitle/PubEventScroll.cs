@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class EventScrollPublisher : MonoBehaviour, IEndDragHandler
+public class PubEventScroll : MonoBehaviour, IEndDragHandler, IDragHandler
 {
     // gan cho 1 scrollview
     // khi scroll theo y thi phat di su kien cho obj dang ky
@@ -15,20 +15,35 @@ public class EventScrollPublisher : MonoBehaviour, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
+        EventDrag._EventDrag.Call_ActionDragEnd();
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        ProcessDrag(eventData);
+    }
+
+    // xu ly khi drag
+    void ProcessDrag(PointerEventData eventData){
         //if(Mathf.Abs( drag end postion - drag start postion > dragthreshould ))
         if (Mathf.Abs(eventData.position.y - eventData.pressPosition.y) > dragThreshould)
         {
-            Debug.Log("Drag nho qua");
-            // Goi phuong thuc o class event de publish event
-            EventsScroll._EventScroll.EventOnScrollView();
+            if(eventData.position.y > eventData.pressPosition.y){
+                Debug.Log("Drag len");
+
+                // Publisher event drag up
+                EventDrag._EventDrag.Call_ActionDragUp();
+
+            }else{
+                Debug.Log("Drag xuong");
+
+                EventDrag._EventDrag.Call_ActionDragDown();
+            }
         }
         else
         {
             Debug.Log("Drag nho qua");
         }
     }
-
-    
-
 }
+
